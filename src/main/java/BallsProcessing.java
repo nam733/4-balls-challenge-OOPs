@@ -1,15 +1,12 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class BallsProcessing extends PApplet {
 
     public static final int width = 648;
     public static final int height = 480;
-    public static final int diameter = 10;
-    int speed =0;
-    Ball ball1;
-    Ball ball2;
-    Ball ball3;
-    Ball ball4;
+    public static ArrayList<Ball> balls = new ArrayList<>();
 
     public static void main(String[] args) {
         PApplet.main("BallsProcessing",args);
@@ -22,10 +19,8 @@ public class BallsProcessing extends PApplet {
 
     @Override
     public void setup() {
-        ball1 = new Ball(speed, height/5, diameter, diameter);
-        ball2 = new Ball(speed, height*2/5, diameter, diameter);
-        ball3 = new Ball(speed, height*3/5, diameter, diameter);
-        ball4 = new Ball(speed, height*4/5, diameter, diameter);
+        for(int posX=1;posX<=4;posX++){
+        balls.add(new Ball(posX,height*posX/5));}
     }
 
     @Override
@@ -34,13 +29,10 @@ public class BallsProcessing extends PApplet {
     }
 
     private void drawCircle() {
-        ball1.display(this);
-        ball1.xCoordinate++;
-        ball2.display(this);
-        ball2.xCoordinate+=2;
-        ball3.display(this);
-        ball3.xCoordinate+=3;
-        ball4.display(this);
-        ball4.xCoordinate+=4;
+        for(Ball ball:balls)
+            {
+                ball.display(this);
+                ball.newCoordinate();
+            }
     }
 }

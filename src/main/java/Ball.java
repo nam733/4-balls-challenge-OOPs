@@ -1,19 +1,23 @@
 import processing.core.PApplet;
 
 public class Ball extends PApplet {
-    float xCoordinate;
+    int xCoordinate;
     float yCoordinate;
-    float arc_width;
-    float arc_height;
+    int diameter;
+    int speed;
 
-    public Ball(float xCoordinate,float yCoordinate,float arc_width,float arc_height) {
+    public Ball(int xCoordinate,float yCoordinate) {
         this.xCoordinate=xCoordinate;
         this.yCoordinate=yCoordinate;
-        this.arc_width=arc_width;
-        this.arc_height=arc_height;
+        this.diameter=10;
+        this.speed=0;
     }
 
     void display(PApplet pApplet) {
-        pApplet.ellipse(xCoordinate,yCoordinate,arc_width,arc_height);
+        pApplet.ellipse(speed,yCoordinate,diameter,diameter);
+    }
+
+     void newCoordinate() {
+        speed = speed + xCoordinate;
     }
 }
